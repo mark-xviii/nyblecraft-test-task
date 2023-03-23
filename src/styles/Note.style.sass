@@ -1,0 +1,57 @@
+.note-container
+  width: 100%
+  height: fit-content
+  background: #080808
+  position: relative
+  border-radius: 1rem
+  padding: 20px
+  flex-direction: column
+  margin: 10px
+
+.note-text
+  font-size: 26px
+  position: relative
+  color: #ffaaff
+  margin-bottom: 40px
+  text-align: justify
+
+.note-tags-container
+  position: relative
+  display: flex
+  flex-wrap: wrap
+
+$note-tag-background-color: #ffaaff
+
+$note-height: 26px
+
+$note-border-width: calc($note-height / 2)
+
+$note-text-height: calc($note-height - 8px)
+
+.note-single-tag
+  display: flex
+  cursor: pointer
+  height: $note-height
+  position: relative
+  margin: 6px
+  justify-content: center
+  align-content: center
+
+.note-tag-text
+  background: $note-tag-background-color
+  user-select: none
+  font-size: $note-text-height
+  color: #080808
+
+.note-tag-border-left
+  width: $note-border-width
+  height: $note-height
+  background: $note-tag-background-color
+  border-radius: 5rem 0 0 5rem
+  overflow: hidden
+
+.note-tag-border-right
+  width: $note-border-width
+  height: $note-height
+  background: $note-tag-background-color
+  border-radius: 0 5rem 5rem 0
