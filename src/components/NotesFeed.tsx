@@ -9,7 +9,7 @@ const NotesFeed = observer(() => {
 
   return (
     <div className='notes-feed-container'>
-      {notesStoreContext.getNotes().map((note) => (
+      {notesStoreContext.getNotes()?.map((note) => (
         <Note id={note.id} text={note.text} tags={note.tags} />
       ))}
     </div>

@@ -32,10 +32,8 @@ const NoteEditor = observer(() => {
   }
 
   useEffect(() => {
-    if (notesStoreContext.notes.length > 0) {
-      if (textareaRef?.current) {
-        textareaRef.current.value = notesStoreContext.currentNote?.text as string;
-      }
+    if (notesStoreContext.currentNote && textareaRef?.current) {
+      textareaRef.current.value = notesStoreContext.currentNote.text as string;
     }
   }, [notesStoreContext.currentNote]);
 

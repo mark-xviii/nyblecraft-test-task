@@ -4,6 +4,7 @@ import NoteEditorModesEnum from '../enums/NoteEditorModes.enum';
 import NoteInterface from '../interfaces/Note.interface';
 import NoteType from '../types/Note.type';
 import hashtagExtractor from '../utils/hashtag-extractor';
+import PersistDataMethods from '../utils/local-storage.util';
 
 export class NotesStore {
   notes: NoteType[] = [];
@@ -14,6 +15,7 @@ export class NotesStore {
 
   constructor() {
     makeAutoObservable(this);
+    this.notes = PersistDataMethods.getPersistData() as NoteType[];
   }
 
   getNotes(): NoteInterface[] {
@@ -21,7 +23,8 @@ export class NotesStore {
   }
 
   pushNote(text: string) {
-    return this.notes.push({ id: this.notes.length + 1, tags: hashtagExtractor(text) as string[], text: text });
+    this.notes.push({ id: this.notes.length + 1, tags: hashtagExtractor(text) as string[], text: text });
+    PersistDataMethods.putPersistData(this.notes);
   }
 
   updateCurrentNote(text: string) {
@@ -42,6 +45,8 @@ export class NotesStore {
 
     const noteIndexToRemove = this.notes.findIndex((note) => note.id === noteId);
     this.notes.splice(noteIndexToRemove, 1);
+
+    PersistDataMethods.putPersistData(this.notes);
   }
 
   setEditorMode(mode: NoteEditorModesEnum) {

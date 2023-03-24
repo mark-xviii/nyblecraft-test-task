@@ -5,7 +5,9 @@ function putPersistData(data: any): any {
 }
 
 function getPersistData(): any {
-  return localStorage.getItem(NOTES_LOCAL_STORAGE_KEY);
+  const data = JSON.parse(localStorage.getItem(NOTES_LOCAL_STORAGE_KEY) as string);
+
+  return data ? data : [];
 }
 
 function wipeAllPersistData(key: string) {
