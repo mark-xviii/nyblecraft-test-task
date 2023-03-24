@@ -1,22 +1,14 @@
+import NoteEditor from './components/NoteEditor';
 import NotesFeed from './components/NotesFeed';
-import NoteInterface from './interfaces/Note.interface';
+import { NotesStoreContext, NotesStore } from './stores/Notes.store';
 
-function App() {
-  const notesExample: NoteInterface[] = [
-    { text: 'Hello Kitty!<br> #sanrio' },
-    { text: 'Съешь ещё этих мягких французских булок да выпей чаю!<br> #french_cuisine #luxury #роскошь_поражает' },
-    { text: 'Съешь ещё этих мягких французских булок да выпей чаю!<br> #french_cuisine #luxury #роскошь_поражает' },
-    { text: 'Съешь ещё этих мягких французских булок да выпей чаю!<br> #french_cuisine #luxury #роскошь_поражает' },
-    { text: 'Съешь ещё этих мягких французских булок да выпей чаю!<br> #french_cuisine #luxury #роскошь_поражает' },
-    { text: 'Hello Kitty!<br> #sanrio' },
-    { text: 'Hello Kitty!<br> #sanrio' },
-  ];
-
+const App = () => {
   return (
-    <>
-      <NotesFeed notes={notesExample} />
-    </>
+    <NotesStoreContext.Provider value={new NotesStore()}>
+      <NoteEditor />
+      <NotesFeed />
+    </NotesStoreContext.Provider>
   );
-}
+};
 
 export default App;

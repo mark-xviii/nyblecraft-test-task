@@ -1,18 +1,17 @@
+@use './CommonStylings.style' as common-stylings
+
 .note-container
-  width: 100%
   height: fit-content
-  background: #080808
+  background: common-stylings.$background-color
   position: relative
-  border-radius: 1rem
-  padding: 20px
+  @include common-stylings.block-essentials()
   flex-direction: column
-  margin: 10px
 
 .note-text
-  font-size: 26px
+  font-size: common-stylings.$common-font-size
   position: relative
-  color: #ffaaff
-  margin-bottom: 40px
+  color: common-stylings.$foreground-color
+  margin-bottom: 1rem
   text-align: justify
 
 .note-tags-container
@@ -20,38 +19,42 @@
   display: flex
   flex-wrap: wrap
 
-$note-tag-background-color: #ffaaff
+$note-tag-height: common-stylings.$common-font-size
 
-$note-height: 26px
+$note-tag-border-width: calc($note-tag-height / 2)
 
-$note-border-width: calc($note-height / 2)
-
-$note-text-height: calc($note-height - 8px)
+$note-tag-text-height: calc($note-tag-height - 8px)
 
 .note-single-tag
   display: flex
   cursor: pointer
-  height: $note-height
+  height: $note-tag-height
   position: relative
   margin: 6px
   justify-content: center
   align-content: center
 
 .note-tag-text
-  background: $note-tag-background-color
+  background: common-stylings.$foreground-color
   user-select: none
-  font-size: $note-text-height
-  color: #080808
+  font-size: $note-tag-text-height
+  color: common-stylings.$background-color
+  border-radius: 5rem
+  padding: 0 10px
 
-.note-tag-border-left
-  width: $note-border-width
-  height: $note-height
-  background: $note-tag-background-color
-  border-radius: 5rem 0 0 5rem
-  overflow: hidden
+@mixin tag-borders()
+  width: $note-tag-border-width
+  height: $note-tag-height
 
-.note-tag-border-right
-  width: $note-border-width
-  height: $note-height
-  background: $note-tag-background-color
-  border-radius: 0 5rem 5rem 0
+.note-actions-container
+  display: flex
+  flex-flow: row-reverse
+
+.note-action
+  display: flex
+  justify-content: center
+
+.note-action-icon
+  stroke: common-stylings.$accent-color
+  margin: 0 0.666rem
+  cursor: pointer

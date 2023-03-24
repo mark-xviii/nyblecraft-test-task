@@ -1,0 +1,35 @@
+@use './CommonStylings.style' as common-stylings
+
+$input-elements-padding: 0.666rem
+
+.note-editor-heading
+  font-size: 32px
+  color: common-stylings.$background-color
+  margin-bottom: 1rem
+
+.note-editor-container
+  width: 33%
+  @include common-stylings.block-essentials()
+  background: common-stylings.$accent-color
+  display: flex
+  flex-flow: column
+
+.note-editor-input
+  border-radius: 1rem
+  background: #00000016
+  padding: $input-elements-padding
+  margin-bottom: 1rem
+  border: none
+  outline: none
+  font-size: 22px
+  resize: none
+  overflow-x: hidden
+  height: fit-content
+
+.note-editor-submit-button
+  border: none
+  border-radius: 3rem
+  background: #080808
+  color: #ffaaff
+  font-size: 18px
+  padding: $input-elements-padding
