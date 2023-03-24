@@ -8,7 +8,7 @@ $input-elements-padding: 0.666rem
   margin-bottom: 1rem
 
 .note-editor-container
-  width: 33%
+  width: calc(100% - 4rem)
   @include common-stylings.block-essentials()
   background: common-stylings.$accent-color
   display: flex
@@ -29,7 +29,7 @@ $input-elements-padding: 0.666rem
 .note-editor-submit-button
   border: none
   border-radius: 1rem
-  background: #080808
-  color: #ffaaff
+  background: common-stylings.$background-color
+  color: common-stylings.$accent-color
   font-size: 18px
   padding: $input-elements-padding

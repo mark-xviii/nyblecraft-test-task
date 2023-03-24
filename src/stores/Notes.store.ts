@@ -13,6 +13,8 @@ export class NotesStore {
 
   noteEditorMode: NoteEditorModesEnum = NoteEditorModesEnum.CREATE;
 
+  searchTags: string[] = [];
+
   constructor() {
     makeAutoObservable(this);
     this.notes = PersistDataMethods.getPersistData() as NoteType[];
@@ -55,6 +57,11 @@ export class NotesStore {
 
   setCurrentNote(note: NoteType) {
     this.currentNote = note;
+  }
+
+  setSearchTags(searchQuery: string) {
+    const tagsFromQuery = hashtagExtractor(searchQuery);
+    this.searchTags = tagsFromQuery ? tagsFromQuery : [];
   }
 }
 
